@@ -3,9 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notebooks</title>
+    <title>Login page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+        body {
+            background-color: #f0f2f5; 
+            font-family: 'Inter', sans-serif;
+            background-image: url(https://media1.tenor.com/m/UW05sKVRbDkAAAAC/minions.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .register-container {
+            background-color: white;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-black {
+            background-color: #000;
+            color: white;
+            width: 100%;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-black:hover { background-color: #333; color: white; }
+
+        .pfp-wrapper { display: flex; justify-content: center; margin-bottom: 20px; }
+
+
+        .navbar { background: white !important; border-bottom: 1px solid #e5e7eb; }
+        .navbar .nav-link { color: #4b5563 !important; font-weight: 500; }
+        .navbar .navbar-brand { color: #111827 !important; font-weight: 700; }
+
+        #GRU { width: 40px; height: 40px; margin-left: 8px; }
+    </style>
+
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg border-bottom">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="Home Page.html">The S Y S T E M</a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Gru_Logo.jpg" alt="GRU" id="GRU">
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="register-container">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Login</h2>
+            <p class="text-muted">NIW OT UOY ROF DENGISED TON SAW TAHT METSYS EHT OT NI NIGOL
+</p>
+        </div>
+
+        <div class="pfp-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Gru_Logo.jpg" alt="Profile" class="img-fluid rounded-circle" width="120">
+        </div>
+
+
+        <form id="loginForm">
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Username</label>
+                <input type="text" class="form-control" id="fname" placeholder="Bob Da Minion" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password" class="form-control" placeholder="********" id="pword" required>
+            </div>
+
+            <div class="mb-4 form-check">
+                <input type="checkbox" class="form-check-input" id="terms">
+                <label class="form-check-label small" for="terms">
+                    Remember me 
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-black">Login</button>
+        </form>
+
+        <p class="text-center mt-3 small">
+            Forgot Your <a href="Forgot Your Username : Password page.html" class="text-primary text-decoration-none fw-bold">Username / Password?</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        const savedName = localStorage.getItem("rememberedUser");
+        if (savedName) {
+            document.getElementById("fname").value = savedName;
+            document.getElementById("terms").checked = true;
+        }
+    };
+
+    document.getElementById("loginForm").onsubmit = function(event) {
+        event.preventDefault(); 
+        
+        let name = document.getElementById("fname").value;
+        let pass = document.getElementById("pword").value;
+        let isRemembered = document.getElementById("terms").checked;
+
+        let correctUser = "Felonious Gru";
+        let correctPass = "Ilovemyminions";
+
+        if (name === correctUser && pass === correctPass) {
+
+            if (isRemembered) {
+                localStorage.setItem("rememberedUser", name);
+            } else {
+                localStorage.removeItem("rememberedUser");
+            }
+            
+            alert("WELCOME BACK " + name + " TO THE S Y S T E M");
+        } else {
+            alert("INCORRECT USERNAME OR PASSWORD. PLEASE TRY AGAIN OR YOUR COMPUTER WILL BE DESTROYED THANK YOU.");
+        }
+    };
+</script>
     
 </body>
 </html>
